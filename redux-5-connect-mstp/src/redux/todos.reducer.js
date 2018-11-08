@@ -1,22 +1,6 @@
-import { ADD_TODO, REMOVE_TODO } from './todos.actions'
+import { ADD_TODO, REMOVE_TODO, FETCH_TODO } from './todos.actions'
 
-let initialState = [
-  {
-    id: 1,
-    title: "delectus aut autem",
-    completed: false
-  },
-  {
-    id: 2,
-    title: "quis ut nam facilis et officia qui",
-    completed: false
-  },
-  {
-    id: 3,
-    title: "fugiat veniam minus",
-    completed: false
-  }
-]
+let initialState = []
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -26,6 +10,9 @@ export default (state = initialState, action) => {
     case REMOVE_TODO:
       let selectedTodoId = action.payload
       return state.filter(todo => todo.id !== Number(selectedTodoId))
+
+    case FETCH_TODO:
+      return action.payload
 
     default:
       return state
